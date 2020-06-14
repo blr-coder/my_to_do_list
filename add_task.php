@@ -14,5 +14,7 @@ if(!empty($_POST['new_task'])) {
     header('Location: index.php ');
 
 } else {
-    echo 'new_task is null!';
+    // echo 'new_task is null!';
+    $_SESSION['error'] = 'this field cannot be empty!';
+    header('Location:  index.php');
 }

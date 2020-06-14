@@ -3,7 +3,7 @@
 include('database_connection.php');
 
 if (empty($_SESSION["user_id"])) {
-    /// redirect to index
+    /// redirect to auth page...
 }
 
 $query = "SELECT * FROM tasks WHERE user_id = '".$_SESSION["user_id"]."' ORDER BY id DESC";
@@ -44,6 +44,15 @@ $result = $statement->fetchAll();
                         </div>
                     </div>
                 </form>
+
+                <?php if(!empty($_SESSION['error'])): ?>
+                    <div class="alert alert-danger my-3" role="alert">
+                        <?= $_SESSION['error'] ?>
+                    </div>
+                <?php endif ?>
+
+                <?php unset($_SESSION['error']) ?>
+
             </div>
         </div>
 
