@@ -3,7 +3,7 @@
 include('database_connection.php');
 
 if (empty($_SESSION["user_id"])) {
-    /// redirect to auth page...
+    header('Location: auth/authorization.php ');
 }
 
 $query = "SELECT * FROM tasks WHERE user_id = '".$_SESSION["user_id"]."' ORDER BY id DESC";
@@ -27,6 +27,10 @@ $result = $statement->fetchAll();
     <title>To Do List</title>
   </head>
   <body>
+
+    <nav class="navbar navbar-light bg-light">
+        <a href="auth/logout.php">LOGOUT</a>
+    </nav>
     
 
     <div class="container my-2">
